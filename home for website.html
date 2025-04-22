@@ -1,0 +1,397 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Indian Craft House</title>
+    <style>
+        body {
+            font-family:'Times New Roman,serif';
+            margin: 0;
+            padding: 10;
+            box-sizing: border-box;
+            
+        }
+        header {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          justify-content:space-between;
+          align-items:end;
+          background: white;
+          padding: 10px 5px;
+          box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+          z-index: 1000;
+        }
+
+        .name {
+            font-size: 30px;
+            font-weight: bold;
+            
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            font-size: 20px;
+            font-weight: bold
+          
+           
+        }
+        nav ul li {
+            margin: 0 5px;
+        }
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            
+           
+            padding: 8px 12px;
+        }
+        nav ul li a:hover {
+            border-bottom: 3px solid #d35400;
+            background: rgba(236, 80, 7, 0.1); 
+            border-radius: 10spx;
+        }
+        .w {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+           
+        }
+        .w-content {
+            position: absolute;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;  
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .w img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .category-card {
+            width: 30%;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .category-card img {
+            width: 100%;
+            height: 600px;
+            display: block;
+        }
+        .category-card .overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+           ;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .h2{margin-left: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            }
+        .craft-section {
+            padding: 50px;
+            background: #f8f1e9;
+        }
+        .craft-content {
+            max-width: 900px;
+            margin: 20px;;
+            text-align: left;
+        }
+        .craft-content h2 {
+            font-size: 36px;
+            color: #333;
+        }
+        .craft-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .craft-items {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .craft-item {
+            text-align: center;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .craft-item img {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .craft-item h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .craft-item p {
+            font-size: 16px;
+            color: #333;
+          
+        }
+        .explore-section {
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      background-color: #f8f1e9;
+      padding: 50px;
+      position: relative;
+    }
+
+    .explore-left {
+      width: 50%;
+    }
+
+    .explore-left h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .explore-list {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .explore-column {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .explore-column li {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .explore-left .btn {
+      background: #fff;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 5px;
+     
+      text-decoration: none;
+    }
+
+    .explore-right {
+      width: 45%;
+      display:inline-block;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .explore-right img {
+      max-width: 100%;
+      height: 300px;
+    }
+    .bottom-footer {
+      background: #4a503d; 
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 50px;
+    }
+    .btn2{
+            display: inline-block;
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+    }
+
+    .footer-brand {
+      max-width: 200px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 50px;
+    }
+
+    .footer-col h5 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col li {
+      margin: 5px 0;
+    }
+
+    .footer-col a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="name">The Indian Craft House</div>
+        <nav>
+            <ul>
+                <li><a href="C:\Users\Lenovo\home for website.html">Home</a></li>
+                <li><a href="#contact">Contacts</a></li>
+                <li><a href="C:\Users\Lenovo\category.html">Collections</a></li>
+                <li><a href="#about us">About us</a></li>
+                <li><a href="#new">New Arrivals</a></li>
+                <li><img src="C:\Users\Lenovo\Downloads\cart.jpg" width="27"  height="27"></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="w" id="home">
+        <div class="w-content">
+            <h1>AUTHENTIC INDIAN HANDICRAFT</h1>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+        <img src="C:\Users\Lenovo\Downloads\pexels-jayanth-muppaneni-1883885743-29002477.jpg"alt="hawa mahal">
+    </section>
+    <h2 class="h2">SHOP BY CATEGORY</h2>
+    <section class="categories">
+        <div class="category-card">
+            <img src="C:\Users\Lenovo\Downloads\download (2).jpg" alt="clothing">
+            <div class="overlay">CLOTHING AND ACCESORIES</div>
+        </div>
+        <div class="category-card">
+            <img src="C:\Users\Lenovo\Downloads\Dhanteras Traditions _ Festive Traditions of India_ A Visual Journey.jpg" alt="crockery">
+            <div class="overlay">CROCKERY</div>
+        </div>
+        <div class="category-card">
+            <img src="C:\Users\Lenovo\Downloads\Devika Narain.jpg"alt="decor">
+            <div class="overlay">HOME DECOR</div>
+         </div>
+         </section>   
+            <section class="craft-section">
+                <div class="craft-content">
+                    <h2>The world’s oldest craft form</h2>
+                    <p>Dhokra Metal Craft. Dhokra is amongst the oldest traditional techniques of metal casting in India, practiced for over 4,000 years, said to date back to the era of the Indus Valley Civilisation. The lost wax technique or ‘cire-perdue’ has been the medium of metal workers in Madhya Pradesh, Chhattisgarh, Orissa and West Bengal. Entirely handcrafted, the unique 13-stage process of Dhokra /Bell-metal making today, is an outcome of the original craft instinct handed down through the centuries. Dhokra or Bell metal is an alloy of brass, and other metals that impart an antique effect to the castings.</p>
+                </div>
+                <div class="craft-items">
+                    <div class="craft-item">
+                        <img src="C:\Users\Lenovo\Downloads\dhokra art1">
+                        <h3>Intricate goddess idol</h3>
+                        <p>₹ 10,395 INR</p>
+                    </div>
+                    <div class="craft-item">
+                        <img src="C:\Users\Lenovo\Downloads\dhokra art2">
+                        <h3>Golden Palanquin</h3>
+                        <p>₹ 3,780 INR</p>
+                    </div>
+                </div>
+            </section>
+            <section class="explore-section">
+                <div class="explore-left">
+                  <h2>Explore our collections</h2>
+                  <div class="explore-list">
+                    <ul class="explore-column">
+                      <li>Clothing</li>
+                      <li>Acessories</li>
+                      <li>Cutleries</li>
+                    </ul>
+                    <ul class="explore-column">
+                      <li>Home Decors</li>
+                      <li>Paintings</li>
+                      <li>Gifts</li>
+                    </ul>
+                  </div>
+                  <a href="#" class="btn2">Shop Now</a>
+                </div>
+                <div class="explore-right">
+                  
+                  <img src="C:\Users\Lenovo\Downloads\Venerdì 16 agosto - Il Post.jpg"alt="Handicraft" />
+                </div>
+              </section><footer class="bottom-footer">
+                <div class="footer-brand" id="contact">
+                  <h2>The India Craft House</h2>
+                </div>
+                <div class="footer-links">
+                  <div class="footer-col">
+                    <h5>The Company</h5>
+                    <ul>
+                      <li><a href="#">Our Story</a></li>
+                      <li><a href="#">Terms of Use</a></li>
+                      <li><a href="#">Site Map</a></li>
+                    </ul>
+                  </div>
+                  <div class="footer-col">
+                    <h5>Orders & Support</h5>
+                    <ul>
+                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="#">Bulk Orders</a></li>
+                      <li><a href="#">Rewards</a></li>
+                      <li><a href="#">FAQs</a></li>
+                    </ul>
+                  </div>
+                  <div class="footer-col">
+                    <h5>Social Media</h5>
+                    <ul>
+                      <li><a href="#">Facebook</a></li>
+                      <li><a href="#">Instagram</a></li>
+                      <li><a href="#">Pinterest</a></li>
+                      <li><a href="#">Twitter</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </footer>
+           
+           
+            
+    
+    
+</body>
+</html>

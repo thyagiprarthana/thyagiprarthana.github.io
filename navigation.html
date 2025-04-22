@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Indian Craft House</title>
+    <style>
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: end;
+    background: white;
+    padding: 10px 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+    .name {
+            font-size: 30px;
+            font-family:Lucida Handwriting;
+            color: #e94715;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav ul li {
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+
+nav ul li a:hover {
+    border-bottom: 3px solid #d35400;
+    background: rgba(236, 80, 7, 0.1); 
+    border-radius: 10spx;
+}
+nav ul li img:hover {
+            border-bottom: 3px solid #d35400;
+            background: rgba(236, 80, 7, 0.1); 
+            border-radius: 10spx;
+        }
+        @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      .name {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+
+      nav ul li {
+        margin: 0;
+      }
+
+      nav ul li a {
+        padding: 5px 0;
+      }
+    }
+</style>
+</head>
+<header>
+    <div class="name">The Indian Craft House</div>
+    <nav>
+        <ul>
+            <li><a href="app.html" target="_parent">Home</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href="category.html" target="_parent">Collections</a></li>
+            <li><a href="about us.html" target="_parent">About us</a></li>
+            <li><a href="#new">New Arrivals</a></li>
+            <li><img src="C:\Users\Lenovo\Downloads\cart.jpg" width="27" height="27" alt="Cart"></li>
+        </ul>
+    </nav>
+</header>
+
+</html>
