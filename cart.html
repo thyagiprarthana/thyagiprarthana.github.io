@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+        }
+        h1 {
+            color: rgb(255, 77, 0);
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .cart-item img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .cart-total {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .empty-cart {
+            text-align: center;
+            font-size: 24px;
+            color: #666;
+        }
+        .remove-btn {
+            background-color: #ed4a19;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .remove-btn:hover {
+            background-color: #f33a01;
+        }
+        .place-order-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #f24910; 
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .place-order-btn:hover {
+            background-color: #f1380a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Shopping Cart</h1>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cart-total"></div><br><br>
+    <div><button class="place-order-btn" onclick="redirectToPayment()">Place Order</button></div>
+
+    <script>
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartTotal.textContent = '';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div>
+                        <h3>${item.title}</h3>
+                        <p>Price: ${item.price}</p>
+                        <button class="remove-btn" data-id="${item.id}">Remove</button>
+                    </div>
+                     </div>            
+                        
+            `).join('');
+            document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const itemId = e.target.getAttribute('data-id');
+            removeItem(itemId);
+        });
+    });
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price.replace(/[^0-9.-]+/g,""));
+                return sum + price;
+            }, 0);
+            
+            cartTotal.textContent = `Total: ₹${total.toFixed(2)}`;
+        }
+
+
+        function removeItem(itemId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== Number(itemId));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        function redirectToPayment() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+   
+    if (cart.length === 0) {
+        alert('Your cart is empty! Please add items before placing order.');
+        return;
+    }
+    
+    window.location.href = 'payment.html';
+}
+        displayCart();
+    </script>
+</body>
+</html>
